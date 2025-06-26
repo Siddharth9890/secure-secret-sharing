@@ -62,7 +62,7 @@ export async function decryptSecret(encryptedData: string, password?: string): P
         const keyBuffer = new Uint8Array(passwordBytes.buffer.slice(passwordBytes.byteOffset, passwordBytes.byteOffset + passwordBytes.byteLength));
         keyMaterial = await crypto.subtle.importKey(
             'raw',
-            keyBuffer.buffer,
+            keyBuffer as BufferSource,
             { name: 'AES-GCM' },
             false,
             ['decrypt']
