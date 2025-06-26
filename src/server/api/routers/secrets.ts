@@ -123,7 +123,8 @@ export const secretsRouter = createTRPCRouter({
             orderBy: { createdAt: 'desc' },
         });
 
-        return secrets.map((secret) => ({
+        return secrets.map((secret: any // eslint-disable-line @typescript-eslint/no-explicit-any
+        ) => ({
             ...secret,
             status:
                 secret.isOneTime && secret.isViewed
