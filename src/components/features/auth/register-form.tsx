@@ -52,7 +52,7 @@ export function RegisterForm() {
   });
 
   const registerMutation = api.auth.register.useMutation({
-    onSuccess: (data) => {
+    onSuccess: () => {
       setSuccess(
         "Registration successful! Please login with your credentials."
       );

@@ -103,7 +103,7 @@ export function SecretsList() {
         </Box>
       ) : (
         <Grid container spacing={3}>
-          {secrets.map((secret: any) => (
+          {secrets.map((secret) => (
             <Grid size={{ xs: 4, md: 4 }} key={secret.id}>
               <Card
                 sx={{
@@ -141,7 +141,7 @@ export function SecretsList() {
                     <Box>
                       <Chip
                         label={getStatusLabel(secret.status)}
-                        color={getStatusColor(secret.status) as any}
+                        color={getStatusColor(secret.status)}
                         size="small"
                         sx={{ mb: 1 }}
                       />

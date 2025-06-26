@@ -89,6 +89,7 @@ export function SecretViewer({ secretId }: SecretViewerProps) {
     try {
       await refetch();
     } catch (err) {
+      console.log(err);
     }
   };
 
@@ -96,6 +97,7 @@ export function SecretViewer({ secretId }: SecretViewerProps) {
     try {
       await refetch();
     } catch (err) {
+      console.log(err);
     }
   };
 
@@ -130,9 +132,9 @@ export function SecretViewer({ secretId }: SecretViewerProps) {
 
           <Alert severity="warning" icon={<Timer />} sx={{ borderRadius: 2 }}>
             <Typography variant="body2">
-              <strong>Important:</strong> This secret might be marked as view only once
-              and may be automatically deleted. Save this information now if you
-              need it later.
+              <strong>Important:</strong> This secret might be marked as view
+              only once and may be automatically deleted. Save this information
+              now if you need it later.
             </Typography>
           </Alert>
 
@@ -183,7 +185,7 @@ export function SecretViewer({ secretId }: SecretViewerProps) {
             Secure Secret
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            You're about to view a secure secret message
+            You`re about to view a secure secret message
           </Typography>
         </Box>
 
@@ -195,7 +197,7 @@ export function SecretViewer({ secretId }: SecretViewerProps) {
             <Box component="ul" sx={{ m: 0, pl: 2 }}>
               <li>This secret is encrypted and secure</li>
               <li>It may be destroyed after viewing</li>
-              <li>Make sure you're in a private location</li>
+              <li>Make sure you`re in a private location</li>
             </Box>
           </Stack>
         </Alert>

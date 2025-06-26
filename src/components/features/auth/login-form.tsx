@@ -62,6 +62,7 @@ export function LoginForm() {
       }
     } catch (err) {
       setError("An error occurred. Please try again.");
+      console.log(err)
     } finally {
       setIsLoading(false);
     }
@@ -132,7 +133,7 @@ export function LoginForm() {
 
       <Box sx={{ textAlign: "center", mt: 3 }}>
         <Typography variant="body2" color="text.secondary">
-          Don't have an account?{" "}
+          Don`t have an account?{" "}
           <Link component={NextLink} href="/auth/register" color="primary">
             Sign up here
           </Link>

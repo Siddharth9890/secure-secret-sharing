@@ -123,7 +123,7 @@ export const secretsRouter = createTRPCRouter({
             orderBy: { createdAt: 'desc' },
         });
 
-        return secrets.map((secret: any) => ({
+        return secrets.map((secret) => ({
             ...secret,
             status:
                 secret.isOneTime && secret.isViewed

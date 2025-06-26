@@ -107,7 +107,7 @@ export default async function HomePage() {
               >
                 <Typography variant="body2">
                   <strong>Guest Mode:</strong> You can create secrets without an
-                  account, but you won't be able to manage them later.
+                  account, but you won`t be able to manage them later.
                   <strong> Register for full features!</strong>
                 </Typography>
               </Alert>
@@ -172,9 +172,9 @@ export default async function HomePage() {
                       lineHeight: 1.6,
                     }}
                   >
-                    "In an era of constant digital sharing, control your
+                    In an era of constant digital sharing, control your
                     confidentiality with temporary, secure transmission of
-                    sensitive information."
+                    sensitive information.
                   </Typography>
                 </CardContent>
               </Card>

@@ -7,15 +7,16 @@ export const metadata: Metadata = {
 };
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-export default function SecretPage({ params }: PageProps) {
+export default async function SecretPage({ params }: PageProps) {
+  const { id } = await params;
   return (
     <div>
-      <SecretViewer secretId={params.id} />
+      <SecretViewer secretId={id} />
     </div>
   );
 }

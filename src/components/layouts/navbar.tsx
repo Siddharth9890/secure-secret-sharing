@@ -1,21 +1,16 @@
 "use client";
 
-import { useState } from "react";
 import {
   AppBar,
   Toolbar,
   Typography,
   Button,
   Box,
-  IconButton,
-  Menu,
-  MenuItem,
   Avatar,
   Chip,
 } from "@mui/material";
 import {
   Shield,
-  AccountCircle,
   Dashboard,
   Add,
   Logout,
@@ -31,20 +26,10 @@ interface NavbarProps {
 }
 
 export function Navbar({ session }: NavbarProps) {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const router = useRouter();
-
-  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   const handleSignOut = async () => {
     await signOut({ callbackUrl: "/" });
-    handleClose();
   };
 
   return (

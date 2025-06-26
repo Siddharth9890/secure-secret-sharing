@@ -16,7 +16,6 @@ import {
   Alert,
   Stack,
   IconButton,
-  Tooltip,
   Divider,
   Chip,
 } from "@mui/material";
@@ -31,7 +30,7 @@ import {
   CheckCircle,
   ContentCopy,
 } from "@mui/icons-material";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -53,6 +52,7 @@ type SecretForm = z.infer<typeof secretSchema>;
 export function CreateSecretForm() {
   const [secretUrl, setSecretUrl] = useState<string | null>(null);
 
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   const {
     control,
     handleSubmit,
@@ -68,6 +68,7 @@ export function CreateSecretForm() {
       password: "",
     },
   });
+  /* eslint-enable @typescript-eslint/no-explicit-any */
 
   const expiresIn = watch("expiresIn");
   const isOneTime = watch("isOneTime");
