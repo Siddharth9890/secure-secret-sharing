@@ -17,7 +17,7 @@ export const secretsRouter = createTRPCRouter({
         .mutation(async ({ ctx, input }) => {
             const { content, isOneTime, expiresAt, password } = input;
 
-            const encryptedContent = encryptSecret(content);
+            const encryptedContent = await encryptSecret(content);
 
             const passwordHash = password ? await bcrypt.hash(password, 12) : null;
 
