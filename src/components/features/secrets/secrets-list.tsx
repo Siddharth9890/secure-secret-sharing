@@ -96,7 +96,7 @@ export function SecretsList() {
           <Button
             variant="contained"
             startIcon={<Add />}
-            onClick={() => router.push("/")}
+            onClick={() => router.push("/dashboard/create")}
           >
             Create Your First Secret
           </Button>

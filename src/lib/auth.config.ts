@@ -1,7 +1,8 @@
+export const runtime = 'nodejs';
 import type { NextAuthConfig } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { z } from 'zod';
-import { verifyPassword } from '@/lib/password';
+import bcrypt from 'bcryptjs';
 import { db } from '@/lib/db';
 
 const LoginSchema = z.object({
@@ -24,7 +25,7 @@ export default {
 
                     if (!user || !user.password) return null;
 
-                    const passwordsMatch = await verifyPassword(password, user.password);
+                    const passwordsMatch = await bcrypt.compare(password, user.password);
 
                     if (passwordsMatch) {
                         return {
