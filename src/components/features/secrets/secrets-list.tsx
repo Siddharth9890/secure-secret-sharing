@@ -103,116 +103,120 @@ export function SecretsList() {
         </Box>
       ) : (
         <Grid container spacing={3}>
-          {secrets.map((secret) => (
-            <Grid size={{ xs: 4, md: 4 }} key={secret.id}>
-              <Card
-                sx={{
-                  height: "100%",
-                  transition: "all 0.2s ease",
-                  "&:hover": {
-                    transform: "translateY(-2px)",
-                    boxShadow: 3,
-                  },
-                }}
-              >
-                <CardContent>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "flex-start",
-                      mb: 2,
-                    }}
-                  >
-                    <Typography variant="h6" sx={{ fontFamily: "monospace" }}>
-                      {secret.id.slice(0, 8)}...
-                    </Typography>
-                    <IconButton
-                      size="small"
-                      color="error"
-                      onClick={() => handleDelete(secret.id)}
-                      disabled={deleteSecret.isPending}
-                    >
-                      <Delete />
-                    </IconButton>
-                  </Box>
-
-                  <Stack spacing={2}>
-                    <Box>
-                      <Chip
-                        label={getStatusLabel(secret.status)}
-                        color={getStatusColor(secret.status)}
-                        size="small"
-                        sx={{ mb: 1 }}
-                      />
-                    </Box>
-
-                    <Stack
-                      direction="row"
-                      spacing={1}
-                      flexWrap="wrap"
-                      useFlexGap
-                    >
-                      {secret.isOneTime && (
-                        <Chip
-                          icon={<Visibility />}
-                          label="One-Time"
-                          size="small"
-                          variant="outlined"
-                          color="warning"
-                        />
-                      )}
-                      {secret.isPassword && (
-                        <Chip
-                          icon={<Lock />}
-                          label="Password"
-                          size="small"
-                          variant="outlined"
-                          color="secondary"
-                        />
-                      )}
-                      {secret.expiresAt && (
-                        <Chip
-                          icon={<Timer />}
-                          label="Expires"
-                          size="small"
-                          variant="outlined"
-                          color="info"
-                        />
-                      )}
-                    </Stack>
-
-                    <Box>
-                      <Typography variant="caption" color="text.secondary">
-                        Created: {dayjs(secret.createdAt).fromNow()}
-                      </Typography>
-                      {secret.expiresAt && (
-                        <Typography
-                          variant="caption"
-                          color="text.secondary"
-                          display="block"
-                        >
-                          Expires: {dayjs(secret.expiresAt).fromNow()}
-                        </Typography>
-                      )}
-                    </Box>
-
-                    <Button
-                      variant="outlined"
-                      size="small"
-                      onClick={() => {
-                        const url = `${window.location.origin}/secret/${secret.id}`;
-                        navigator.clipboard.writeText(url);
+          {secrets.map(
+            (
+              secret: any // eslint-disable-line @typescript-eslint/no-explicit-any
+            ) => (
+              <Grid size={{ xs: 4, md: 4 }} key={secret.id}>
+                <Card
+                  sx={{
+                    height: "100%",
+                    transition: "all 0.2s ease",
+                    "&:hover": {
+                      transform: "translateY(-2px)",
+                      boxShadow: 3,
+                    },
+                  }}
+                >
+                  <CardContent>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "flex-start",
+                        mb: 2,
                       }}
-                      disabled={secret.status !== "active"}
                     >
-                      Copy Link
-                    </Button>
-                  </Stack>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
+                      <Typography variant="h6" sx={{ fontFamily: "monospace" }}>
+                        {secret.id.slice(0, 8)}...
+                      </Typography>
+                      <IconButton
+                        size="small"
+                        color="error"
+                        onClick={() => handleDelete(secret.id)}
+                        disabled={deleteSecret.isPending}
+                      >
+                        <Delete />
+                      </IconButton>
+                    </Box>
+
+                    <Stack spacing={2}>
+                      <Box>
+                        <Chip
+                          label={getStatusLabel(secret.status)}
+                          color={getStatusColor(secret.status)}
+                          size="small"
+                          sx={{ mb: 1 }}
+                        />
+                      </Box>
+
+                      <Stack
+                        direction="row"
+                        spacing={1}
+                        flexWrap="wrap"
+                        useFlexGap
+                      >
+                        {secret.isOneTime && (
+                          <Chip
+                            icon={<Visibility />}
+                            label="One-Time"
+                            size="small"
+                            variant="outlined"
+                            color="warning"
+                          />
+                        )}
+                        {secret.isPassword && (
+                          <Chip
+                            icon={<Lock />}
+                            label="Password"
+                            size="small"
+                            variant="outlined"
+                            color="secondary"
+                          />
+                        )}
+                        {secret.expiresAt && (
+                          <Chip
+                            icon={<Timer />}
+                            label="Expires"
+                            size="small"
+                            variant="outlined"
+                            color="info"
+                          />
+                        )}
+                      </Stack>
+
+                      <Box>
+                        <Typography variant="caption" color="text.secondary">
+                          Created: {dayjs(secret.createdAt).fromNow()}
+                        </Typography>
+                        {secret.expiresAt && (
+                          <Typography
+                            variant="caption"
+                            color="text.secondary"
+                            display="block"
+                          >
+                            Expires: {dayjs(secret.expiresAt).fromNow()}
+                          </Typography>
+                        )}
+                      </Box>
+
+                      <Button
+                        variant="outlined"
+                        size="small"
+                        onClick={() => {
+                          const url = `${window.location.origin}/secret/${secret.id}`;
+                          navigator.clipboard.writeText(url);
+                        }}
+                        disabled={secret.status !== "active"}
+                      >
+                        Copy Link
+                      </Button>
+                    </Stack>
+                  </CardContent>
+                </Card>
+              </Grid>
+            )
+          )}
         </Grid>
       )}
     </Box>
